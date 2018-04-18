@@ -1,0 +1,85 @@
+name: primitive-algorithms
+
+-- The package version.  See the Haskell package versioning policy (PVP)
+-- for standards guiding when and how versions should be incremented.
+-- https://wiki.haskell.org/Package_versioning_policy
+-- PVP summary:
+--       +-+------- breaking API changes
+--       | | +----- non-breaking API additions
+--       | | | +--- code changes with no API change
+version: 0.1.0.0
+
+-- A short (one-line) description of the package.
+-- synopsis:
+
+-- A longer description of the package.
+-- description:
+
+license: PublicDomain
+
+author: Nikita Karetnikov
+
+maintainer: nikita@karetnikov.org
+
+category: Data
+
+build-type: Simple
+
+-- Extra files to be distributed with the package, such as examples or a
+-- README.
+extra-source-files:
+  ChangeLog.md
+  Makefile
+  default.nix
+  shell.nix
+
+-- Constraint on the version of Cabal needed to build this package.
+cabal-version: >=1.10
+
+
+library
+  hs-source-dirs: src
+  -- Modules exported by the library.
+  exposed-modules:
+    Data.Primitive.Algorithm.Insertion
+    Data.Primitive.Algorithm.Insertion.Test
+    Data.Primitive.ByteArray
+    Data.Primitive.Int
+    Data.Primitive.MutableByteArray
+    Data.Primitive.Word
+
+  -- Modules included in this library but not exported.
+  -- other-modules:
+
+  -- LANGUAGE extensions used by modules in this package.
+  -- other-extensions:
+
+  -- Other library packages from which modules are imported.
+  build-depends:
+    base >=4.10 && <4.12,
+    HUnit >=1.2 && <1.7,
+    ghc-prim >=0.5.1.1 && <0.6
+
+  default-language: Haskell2010
+  ghc-options: -Wall -Werror -O2
+
+
+test-suite tests
+  type: exitcode-stdio-1.0
+  hs-source-dirs: src
+  main-is: Test.hs
+  other-modules:
+    Data.Primitive.Algorithm.Insertion
+    Data.Primitive.Algorithm.Insertion.Test
+    Data.Primitive.ByteArray
+    Data.Primitive.Int
+    Data.Primitive.MutableByteArray
+    Data.Primitive.Word
+
+  build-depends:
+    base >=4.6 && <4.12,
+    HUnit >=1.2 && <1.7,
+    ghc-prim >=0.5.1.1 && <0.6
+
+  default-language: Haskell2010
+  ghc-options: -Wall -Werror -O2
